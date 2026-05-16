@@ -1,0 +1,122 @@
+nav{
+    display: block;
+    position: sticky;
+    top: 10;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 38px;
+    background:#0f565a;
+}
+nav ul{
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+    color: #f3f5b5;
+    margin: 0;
+    padding: 0;
+}
+nav li{
+    float: left;
+    margin-right: 0;
+    list-style: none;
+}
+nav a{
+    display: block;
+    color: #f3f5b5;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 10px;
+    
+    text-decoration: none;
+}
+nav a:hover:not(.active){
+    background-color:  #0a3c3f;
+}
+.active{
+    background-color: #041718;
+}
+#about{
+    float: right;
+}
+
+.title{
+    margin: 0;
+    padding: 10px;
+    background-color:#0f565a;
+    color: #f3f5b5;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+body{
+    background-color: #041718;
+    margin: 0;
+    color: #f3f5b5;
+    font-family: 'Courier New', Courier, monospace;
+}
+a{
+    text-decoration: none;
+    color: #f3f5b5;
+}
+
+.post_outline{
+    float: left;
+    margin: 5px;
+    padding: 10px 4%;
+    outline: 2px solid;
+    outline-color: #65a59a;
+    border-radius: 20px;
+    color: #f3f5b5;
+}
+.post_outline a{
+    text-decoration: none;
+    color: #f3f5b5;
+}
+.date{
+    font-size: small;
+}
+.post_outline img{
+    float: right;
+    height: 150px;
+    width: 200px;
+    border-radius: 0px;
+}
+
+.wrapper{
+    height: fit-content;
+    width: 100%;
+    display: grid;
+}
+#bio_pic{
+    place-self: center;
+    margin-top: 10px;
+    padding: 0px;
+    height: 250px;
+    width: 10em;
+    outline: 2px solid #f3f5b5;
+    border-radius: 5px;
+}
+#name{
+    place-self: center;
+}
+#contact_links{
+    width: 10em;
+    height: 1em;
+    place-self: center;
+}
+.wrapper li{
+    list-style: none;
+    text-align: center;
+    margin: 5px;
+    padding-top: 5px;
+    float: left;
+}
+
+.bulk_text{
+    position: relative;
+    text-align: center;
+    margin: 2em;
+    padding: 1em;
+    float: left;
+}
