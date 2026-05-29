@@ -10,7 +10,7 @@ nav{
     background:#0f565a;
 }
 nav ul{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
     color: #f3f5b5;
     margin: 0;
@@ -24,7 +24,7 @@ nav li{
 nav a{
     display: block;
     color: #f3f5b5;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     padding: 10px;
     
@@ -53,11 +53,19 @@ body{
     background-color: #041718;
     margin: 0;
     color: #f3f5b5;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 a{
     text-decoration: none;
     color: #f3f5b5;
+}
+p{
+    margin: 5px;
+}
+
+td{
+    text-align: center;
+    vertical-align: middle;
 }
 
 .post_outline{
