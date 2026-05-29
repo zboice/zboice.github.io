@@ -59,7 +59,8 @@
         time than space, so we define 
         \( \tau = x_3 \). We then define the optical 
         Lagrangian to be
-        $$ L = n(x_1,x_2,\tau) \sqrt{1 + \dot{x}_1 + \dot{x}_2}$$
+        $$ L = n(x_1,x_2,\tau) \sqrt{1 + \dot{x}_1 + \dot{x}_2} 
+        \tag{1} \label{lagrangian}$$
         where \( \dot{x} = \frac{\partial x}{\partial \tau} \). 
         The Euler-Lagrange equations take the same form as in classical 
         mechanics and allow one to analyze optical problems. However, the 
@@ -76,12 +77,16 @@
         Then, we define the Hamiltonian of a general optical system to be
         \begin{equation}
             H = - \sqrt{ n(\mathbf{q})^2 - \mathbf{p}^2 }.
+            \tag{2}
             \label{Hamiltonian}
         \end{equation}
         Hamilton's equations take the same form as in classical mechanics
         \begin{align}
-            \frac{\partial H}{\partial q_i} &= -\dot{p}_i \\
+            \frac{\partial H}{\partial q_i} &= -\dot{p}_i 
+            \tag{3}
+            \\
             \frac{\partial H}{\partial p_i} &= \dot{q}_i.
+            \tag{4}
             \label{Hamilton Eqn}
         \end{align}
         With the basics of this framework in place, we can now solve an optical problem.
@@ -94,7 +99,7 @@
         \begin{equation*}
             n(\mathbf{q}) = \sqrt{n_0^2 (1-\mathbf{q}^2)+\mathbf{q}^2},
         \end{equation*}
-        where $n_0$ is greater than 1 [\ref{GRIN ideas}]. The Hamiltonian of this system is then
+        where $n_0$ is greater than 1 [<a href="#fn:2">2</a>]. The Hamiltonian of this system is then
         \begin{equation*}
             H = -\sqrt{ n_0^2 (1-\mathbf{q}^2)+\mathbf{q}^2 - \mathbf{p}^2 },
         \end{equation*}
@@ -109,8 +114,10 @@
         give the following expressions for motion, given an initial position of $\mathbf{q}_0$ 
         and momentum of $\mathbf{p}_0$:
         \begin{align}
-            \mathbf{q}(\tau) &= \mathbf{q}_0 \cos \omega \tau - \frac{\mathbf{p}_0 }{H\omega} \sin \omega \tau \\
+            \mathbf{q}(\tau) &= \mathbf{q}_0 \cos \omega \tau - \frac{\mathbf{p}_0 }{H\omega} \sin \omega \tau 
+            \tag{5} \\
             \mathbf{p}(\tau) &= \mathbf{p}_0 \cos \omega \tau + \mathbf{q}_0 H\omega \sin \omega \tau
+            \tag{6}
             \label{grin trajectory}
         \end{align}
         where $\omega$ is defined to be $\sqrt{n_0^2-1}/H$.
@@ -120,54 +127,91 @@
         optical fiber ($\tau$). Since the fiber is cylindrically symmetric, we plot only in two 
         dimensions.
     </p>
-    <figure>
+    <figure id="fig1">
         <div class="d-flex justify-content-center">
             <div class="'w-100">
-                <img alt="Gradient Index Graphic"
-                src="GRIN_graphic.png" width="760" height="503" loading="lazy">
+                <center>
+                    <img alt="Gradient Index Graphic"
+                    src="GRIN_graphic.png" style="width: 100%; max-width: 480px;"
+                    loading="lazy">
+                </center>
             </div>
         </div>
+        <!-- vw: relative to view width
+         %: relative to parent
+         em: relative to fontsize 
+         enclosing it in center centers the image -->
     </figure>
 
 <h3>Liouville's Theorem</h3>
-An important result from Hamiltonian Mechanics is Liouville's theorem, which says that the area enclosed by several points, corresponding to the motion of a system of particles, is constant during that motion [\ref{classical mechanics}]. We shall examine the motion of points in the geometry above and show that Liouville's theorem holds.
+<p>
+An important result from Hamiltonian Mechanics is Liouville's theorem, which says that the area enclosed by several points, corresponding to the motion of a system of particles, is constant during that motion [<a href="#fn:3">3</a>]. We shall examine the motion of points in the geometry above and show that Liouville's theorem holds.
 
-Consider four points in phase space that comprise a square at $\tau = 0$, with initial conditions explicitly laid out in Table \ref{initial conditions}:
-\begin{table}[H]
-    \centering
-    \begin{tabular}{c|c|c}
-        Point & $q(0)$ & $p(0)$ \\
-        \hline
-        A & $q_0$ & $p_0$ \\
-        B & $q_0+\epsilon$ & $p_0$ \\
-        C & $q_0+\epsilon$ & $p_0 + \delta$ \\
-        D & $q_0$ & $p_0+\delta$ \\
-    \end{tabular}
-    \caption{Initial Conditions in phase space}
-    \label{initial conditions}
-\end{table}
-We now consider their evolution through phase space over time. At a given time, they will form a parallelogram, as in Figure \ref{time evol}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\linewidth]{equal area.png}
-    \caption{Four points in phase space at a given time}
-    \label{time evol}
-\end{figure}
-We wish to calculate the area of the parallelogram formed by these points at any arbitrary time. The simplest means of calculating this area is finding the magnitude of the cross product: the area equals $\big| \overrightarrow{AB} \times \overrightarrow{AD} \big|$. Given the initial conditions above, $\overrightarrow{AB}=(\epsilon \cos \omega \tau, H\omega \epsilon \sin \omega \tau)$, while $\overrightarrow{AD}=(-\frac{\delta}{H\omega} \sin \omega \tau, \delta \cos \omega \tau)$. Thus, we find
-\begin{align*}
-    A = \big| \overrightarrow{AB} \times \overrightarrow{AD} \big| &= (\epsilon \cos \omega \tau)(\delta \cos \omega \tau) - ( H\omega \epsilon \sin \omega \tau)(-\frac{\delta}{H\omega} \sin \omega \tau) \\
+Consider four points in phase space that comprise a square at $\tau = 0$, with initial conditions explicitly laid out in Table <a href="#tab:1">1</a>
+</p>
+<center>
+    <table style="width: 50vw;" id="tab:1">
+    <tr>
+        <th> Point </th>
+        <th> $q(0)$ </th>
+        <th> $p(0)$ </th>
+    </tr>
+    <tr>
+        <td align="center"> A </td>
+        <td> $q_0$ </td>
+        <td> $p_0$ </td>
+    </tr>
+    <tr>
+        <td> B </td>
+        <td> $q_0+\epsilon$ </td>
+        <td> $p_0$ </td>
+    </tr>
+    <tr>
+        <td> C </td>
+        <td> $q_0+\epsilon$ </td>
+        <td> $p_0+\delta$ </td>
+    </tr>
+    <tr>
+        <td> D </td>
+        <td> $q_0$ </td>
+        <td> $p_0+\delta$ </td>
+    </tr>
+    </table>
+</center>
+<p>
+    We now consider their evolution through phase space over time. At a given time, they will form a parallelogram, as in Figure <a href="#fig2">2</a>.
+</p>
+<figure id="fig2">
+    <center>
+        <div style="background-color: whitesmoke; max-width: 500px;">
+                    <img alt="Gradient Index Graphic"
+                    src="equal area.png" style="width: 100%; max-width: 480px;"
+                    loading="lazy">
+        </div>
+    </center>
+    </figure>
+<p>
+    We wish to calculate the area of the parallelogram formed by these points at any arbitrary time. The simplest means of calculating this area is finding the magnitude of the cross product: the area equals $\big| \overrightarrow{AB} \times \overrightarrow{AD} \big|$. Given the initial conditions above, $\overrightarrow{AB}=(\epsilon \cos \omega \tau, H\omega \epsilon \sin \omega \tau)$, while $\overrightarrow{AD}=(-\frac{\delta}{H\omega} \sin \omega \tau, \delta \cos \omega \tau)$. Thus, we find
+    \[
+    \begin{align}
+    A &= \big| \overrightarrow{AB} \times \overrightarrow{AD} \big| \\
+    &= (\epsilon \cos \omega \tau)(\delta \cos \omega \tau) - ( H\omega \epsilon \sin \omega \tau)(-\frac{\delta}{H\omega} \sin \omega \tau) \\
     &= \epsilon \delta (\cos^2 \omega \tau + \sin^2 \omega \tau) \\
     &= \epsilon \delta
-\end{align*}
+    \end{align}
+    \]
 so the area is constant in time, and Liouville's theorem holds for this optical case.
+</p>
 
 <h3>The Poisson Bracket</h3>
-Analyzing Hamiltonian Optics with the above method reduces to solving slightly different forms of the same differential equations over and over again. But what if we could find some sort of invariant quantity that allowed us to simplify these calculations or solve them for a more general case? In Classical Mechanics, defining the Poisson Bracket clarifies which quantities are conserved over some path through our abstract space [\ref{poisson bracket}]. Analyzing the same structure here should yield a similar notion of conserved quantities, which we can use to model motion.
+<p>
+    Analyzing Hamiltonian Optics with the above method reduces to solving slightly different forms of the same differential equations over and over again. But what if we could find some sort of invariant quantity that allowed us to simplify these calculations or solve them for a more general case? In Classical Mechanics, defining the Poisson Bracket clarifies which quantities are conserved over some path through our abstract space [<a href="#fn:4">4</a>]. Analyzing the same structure here should yield a similar notion of conserved quantities, which we can use to model motion.
 
 We define the Poisson Bracket of two functions $f$ and $g$ to be
 \begin{equation}
     \{ f,g \} = \sum_i \Bigg( \frac{\partial f}{\partial q_i}\frac{\partial g}{\partial p_i} - \frac{\partial f}{\partial p_i}\frac{\partial g}{\partial q_i}  \Bigg)
-\end{equation}
+    \tag{7}
+    \end{equation}
 and say that two operators "Poisson commute" if the value of $\{ f,g \} \equiv 0$. There are several important properties of Poisson Brackets:
 \begin{align*}
     \{ f,g \} &= -\{ g,f \} \\
@@ -180,13 +224,16 @@ Each of these follows directly from the differential nature of the Poisson brack
 A key result from classical mechanics is that the Poisson Bracket of a function on phase space ($f$) with the Hamiltonian is equal to its time derivative:
 \begin{equation}
     \{ f, H\} = \frac{df}{d \tau}.
+    \tag{8}
 \end{equation}
 Thus, if the function $f$ Poisson commutes with the Hamiltonian, it is a conserved quantity over time
 \begin{equation*}
     \{ f,H \} = \frac{df}{d \tau} = 0.
 \end{equation*}
+</p>
 
 <h3>Finding an Invariant</h3>
+<p>
 We now seek a conserved quantity by analyzing the Poisson bracket of some function with the Hamiltonian. Let $S$ be a generic function such that $S = S(q,p)$. Then, the Poisson bracket is
 \begin{align*}
     \{ S, H\} &= \frac{\partial S}{\partial q} \frac{\partial H}{\partial p} - \frac{\partial S}{\partial p} \frac{\partial H}{\partial q}\\
@@ -197,19 +244,22 @@ where $S_x = \frac{\partial S}{\partial x}$. We seek a function, $S$, such that 
     S_q \Bigg( \frac{p}{\sqrt{n(q,\tau)^2-p^2} } \Bigg)  &= - S_p \Bigg( \frac{\partial n}{\partial q} \frac{n(q,\tau)}{\sqrt{n(q,\tau)^2 - p^2} }\Bigg) \\
     p S_q &= -n(q,\tau) \frac{\partial n}{\partial q} S_p
 \end{align*}
-which is a PDE of the function $S$. We can solve this PDE (see Equation \ref{solution} in Appendix A) for the following solution:
+which is a PDE of the function $S$. We can solve this PDE (see Equation \eqref{solution} in Appendix A) for the following solution:
 \begin{align*}
     S(q,p) &= S_0 \exp \Big[ \frac{p^2-n^2}{2} \mu\Big]
 \end{align*}
 We note however that $n^2 - p^2$ is the negative square of the Hamiltonian of the system. Thus, our new invariant is 
 \begin{equation}
     S(q,p) = S_0\exp \Big[ \frac{-H^2}{2}\mu \Big],
+    \tag{9}
 \end{equation}
 which we see is time independent. We now have a function that we can use in general for any problem characterized by a given optical Hamiltonian. In gravitational physics, we used invariants of a system to derive a "radial equation", which simplified the problem of motion on curved spacetime. Importantly, the problem went from solving a PDE to solving a system of ODEs, without any sort of discretization step. A similar approach seems possible here, but it would require a more complete understanding of the second invariant of the system.
 
-Holm and Wolf [\ref{Holm and Wolf}] lay out a more comprehensive treatment of this idea, but limit their analysis to an invariant that exists for axisymmetric optical fibers. If one applied Noether's Theorem to the general optical Lagrangian (Equation \ref{lagrangian}), they should find more symmetries of the optical space, which yields another invariant along the optical path. I ran out of time to fully delve into this idea though.
+Holm and Wolf [<a href="#fn:5">5</a>] lay out a more comprehensive treatment of this idea, but limit their analysis to an invariant that exists for axisymmetric optical fibers. If one applied Noether's Theorem to the general optical Lagrangian (Equation \eqref{lagrangian}), they should find more symmetries of the optical space, which yields another invariant along the optical path. I ran out of time to fully delve into this idea though.
+</p>
 
 <h3>Lie Operators</h3>
+<p>
 Another type of abstraction, unrelated to invariants, comes from introducing ideas from Lie theory. Consider a one-dimensional optical situation where we want to probe a point's evolution along the optical axis. Let us define the vector $X = (q, p)$, so that the entire problem can be characterized by
 \begin{equation*}
     X'(\tau) = \{ H, X(\tau)\}.
@@ -221,6 +271,7 @@ However, we note that this expression can be modified to yield a more suggestive
 where the second slot of the bracket acts on the first function right of the bracket. Then, this reads as a differential equation for $X(\tau)$ with some additional abstract operator. If we assume the Hamiltonian does not depend on $\tau$, this is a constant operator and we know the solution to be
 \begin{equation}
     X(\tau) = e^{\tau\{ H, \cdot \}} X_0.
+    \tag{10}
     \label{lie transformation}
 \end{equation}
 This expression obscures the nuance that comes from exponentiating an operator (which can be treated in the same way as exponentiating a matrix). Thus,
@@ -228,8 +279,10 @@ This expression obscures the nuance that comes from exponentiating an operator (
     e^{\tau\{ H, \cdot \}} = \sum_n \frac{(-\tau)^n}{n!} \{ H,\cdot \}^n
 \end{equation*}
 where the $n$th power of a Poisson bracket refers to one that has been nested $n$ times. The implications of this approach are best understood through an example.
+</p>
 
 <h4>The GRIN revisited</h4>
+<p>
 We shall consider again a gradient index fiber optic, described by a Hamiltonian,
 \begin{equation*}
     H = - \sqrt{n_0^2(1-q^2) + q^2 - p^2}.
@@ -238,7 +291,7 @@ The positional evolution of this system can be understood by analyzing
 \begin{equation*}
     q'(\tau) = \{ H,\cdot \} q(\tau),
 \end{equation*}
-as laid out in [\ref{lie stuff}].
+as laid out in [<a href="#fn:6">6</a>].
 The Lie transformation we seek is
 \begin{equation*}
     \hat{Q} = e^{\{ H,\cdot \}}q \equiv \sum_n \frac{(-\tau)^n}{n!} \{ H,q \}^n
@@ -256,7 +309,7 @@ which allow us to easily calculate the nested brackets:
     \{ H,q \}^3 &= \{ H, -\frac{q(n_0^2-1)}{H^2} \} = -\frac{p(n_0^2-1)}{H^3} \\
     \{ H,q \}^4 &= \{H,-\frac{p(n_0^2-1)}{H^3} \} = \frac{q(n_0^2-1)^2}{H^4}.
 \end{align*}
-Combining these elements of the Lie transformation with the governing equation of the system (Equation \ref{lie transformation}), we see
+Combining these elements of the Lie transformation with the governing equation of the system (Equation \eqref{lie transformation}), we see
 \begin{align*}
     q(\tau) &= 1 - \Big( \frac{p}{H}\tau \Big) + \Big(-\frac{q(n_0^2-1)}{H^2} \frac{\tau^2}{2}\Big) -\Big( -\frac{p(n_0^2-1)}{H^3} \frac{\tau^3}{6} \Big) + \Big( \frac{q(n_0^2-1)^2}{H^4} \frac{\tau^4}{24} \Big) +... \\
     &= 1 - \frac{q}{2}\Big( (n_0^2-1) \Big(\frac{\tau}{H} \Big)^2\Big) + \frac{q}{24}\Big( (n_0^2-1)^2 \Big( \frac{\tau}{H} \Big)^4 \Big) + ...\\
@@ -273,22 +326,27 @@ where, again, we define $\omega = \sqrt{\frac{n_0^2-1}{H^2}}$. Similar analysis 
 \end{align*}
 as before. This method of analyzing time evolution lends itself nicely to more complex situations that have no analytical solution. Truncating the Taylor series at a given point gives a sufficiently accurate answer for the motion of light.
 
-Indeed, Reference \ref{GRIN ideas} lays out current directions of research related to understanding the role Lie operators play in Hamiltonian optics. They similarly set up how a discontinuous Galerkin method informed by Lagrangian/Hamiltonian mechanics can be set up in a way that lends itself to optical analysis (see the semi-Lagrangian DG method).
+Indeed, Reference <a href="#fn:2">2</a> lays out current directions of research related to understanding the role Lie operators play in Hamiltonian optics. They similarly set up how a discontinuous Galerkin method informed by Lagrangian/Hamiltonian mechanics can be set up in a way that lends itself to optical analysis (see the semi-Lagrangian DG method).
 
-Alternatively, Reference \ref{transfer matrices} lays out how Lie Transformations can be used to understand the transfer matrix method and derive matrices for more complicated elements on a beam line. Though this reference focuses on applications to accelerator physics, the parallels are clear and further analysis seems appropriate.
+Alternatively, Reference <a href="#fn:7">7</a> lays out how Lie Transformations can be used to understand the transfer matrix method and derive matrices for more complicated elements on a beam line. Though this reference focuses on applications to accelerator physics, the parallels are clear and further analysis seems appropriate.
+</p>
 
 <h3>Conclusions</h3>
+<p>
 Analyzing the GRIN problem in both of these ways elucidates the power of Hamiltonian optics. Similarly to other branches of physics, we have started here by essentially analyzing the optical simple harmonic oscillator. This analysis lays a foundation for future work, and can be used in approximations for more complex systems.
+</p>
 
 <h3>Appendix A</h3>
+<p>
 We have the PDE
 \begin{equation}
     p \frac{\partial S}{\partial q} = -n \frac{\partial n}{\partial q}\frac{\partial S}{\partial p}
+    \tag{11}
     \label{pde}
 \end{equation}
 which does not have well-established boundary conditions. We can still solve the PDE generally and impose some physical understanding to squeeze meaning out of this problem.
 
-We use separation of variables such that $S(q,p) = \xi(q) \chi(p)$ and Equation \ref{pde} becomes
+We use separation of variables such that $S(q,p) = \xi(q) \chi(p)$ and Equation \eqref{pde} becomes
 \begin{align*}
     p \chi(p)\frac{d\xi}{dq} = -n \frac{d n}{d q} \xi(q)\frac{d \chi}{d p}.
 \end{align*}
@@ -309,9 +367,11 @@ which we can solve to find that
 We then combine these to find an expression for $S$
 \begin{equation}
     S(q,p)=S_0 \exp \Big[ \frac{p^2-n^2}{2} \mu\Big],
+    \tag{12}
     \label{solution}
 \end{equation}
 where we assume that initially, $S$ has some known distribution over $q$ and $p$. Additionally, $\mu$ can be any real number without changing the validity of this solution.
+</p>
 
 <div class="references">
     <hr>
@@ -319,42 +379,49 @@ where we assume that initially, $S$ has some known distribution over $q$ and $p$
         <li id="fn:1">
             <p>
                 Wikipedia: <a href="https://en.wikipedia.org/wiki/Hamiltonian_optics">Hamiltonian Optics</a>
+                $\label{ham optics}$
             </p>
         </li>
         <li id="fn:2">
             <p>
                 M. Anthonissen <em>Hamiltonian optics, Lie algebra and Liouville’s equation</em>
                 <a href="https://wsc.project.cwi.nl/woudschoten-conferences/2024-conference/anthonissen-woudshoten-2024-talk2.pdf">slides</a>
+                $\label{GRIN ideas}$
             </p>
         </li>
         <li id="fn:3">
             <p>
                 S. T. Thornton, J. B. Marion, <em>Classical Dynamics of Particles and Systems</em>
                 Brooks/Cole Cengage Learning, Boston, 5th ed.
+                $\label{classical mechanics}$
             </p>
         </li>
         <li id="fn:4">
             <p>
                 Physics With Elliot <em>Before You Start On Quantum Mechanics, Learn This</em>
                 <a href="https://youtu.be/Nd4b0_vJZUk?si=KSzqfUyqnc3DUKG-">video</a>
+                $\label{poisson bracket}$
             </p>
         </li>
         <li id="fn:5">
             <p>
                 D. D. Holm, K. B. Wolf, <em>Lie-Poisson description of Hamiltonian ray optics</em>
                 <a href="https://www.ma.ic.ac.uk/~dholm/classnotes/HolmWolf-RayOptics1991.pdf">paper</a>
+                $\label{Holm and Wolf}$
             </p>
         </li>
         <li id="fn:6">
             <p>
                 Y. Eidelman, <em>Introduction to Lie Operators for Accelerator Physics</em>
                 <a href="https://www.aps.anl.gov/files/APS-sync/lsnotes/files/APS_1418211.pdf">Lie operators (pp. 12-14)</a>
+                $\label{lie stuff}$
             </p>
         </li>
         <li id="fn:7">
             <p>
                 D. Kelliher, <em>Hamiltonian Dynamics</em>
                 <a href="https://indico.cern.ch/event/1192266/contributions/5012573/attachments/2543871/4380318/Hamiltonian_lecture1.pdf">presentation</a>
+                $\label{transfer matrices}$
             </p>
         </li>
     </ol>
