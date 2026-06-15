@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zachary Boice</title>
+
+    <link rel="stylesheet" href="../../style.css">
+    <script>
+        MathJax = {
+        tex: {
+        inlineMath: {'[+]': [['$', '$']]}
+        }
+    };
+    </script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1 class="title">zachary boice</h1>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/index.html">home</a></li>
+            <li><a class="active" href="/blog.html">blog</a></li>
+            <li><a href="/simulations.html">simulations</a></li>
+            <li><a href="/activities.html">cv</a></li>
+            <li id="about"><a href="/bio.html">about</a></li>
+        </ul>
+    </nav>
+    <h1>A bit about symplectic methods</h1>
+    <h3>By Zachary Boice</h3>
+
+    <h2>Introduction</h2>
+    <p>
+
+    </p>
+
+    <h2>Description of this method</h2>
+    <p>
+
+    </p>
+
+    <h2>Comparison of Methods</h2>
+    <p>
+        Now that we have developed this symplectic method, it's valuable to compare it to other
+        integration methods to understand its performance and strengths. The video below compares
+        the symplectic method to two numerical integrators from scipy, all with the same, fixed step size.
+        <center>
+            <video style="width: 100%; max-width: 480px; margin: 5px;" controls>
+                <source src="blog_posts/symplectic_method/integration_comparison.mp4" type="video/mp4">
+            </video>
+        </center>
+        As the simulation continues, we clearly see that the symplectic integrator conserves energy
+        and keeps the orbiting particle on its elliptical path.
+
+        But this isn't exactly a fair competition among the integrators. The strength of the Runge-Kutta
+        method is how well it can be tuned to the problem to produce highly accurate results blazingly fast.
+        So now, let's integrate for the same exact conditions, but with absolute and relative error tolerance 
+        set for the two non-symplectic methods.
+        <center>
+            <video style="width: 100%; max-width: 480px; margin: 5px;" controls>
+                <source src="blog_posts/symplectic_method/integration_comparison.mp4" type="video/mp4">
+            </video>
+        </center>
+        Now, we see that non-symplectic methods achieve a better match with the Hamiltonian at early times.
+        At late times, error compounds and we see that the symplectic method again reigns supreme. If we run
+        any position or energy comparison for long enough, the symplectic method will win out in accuracy.
+        But at what cost? The table below shows how long each method took for the above simulation, and
+        how many calls each made to the system derivative function (often the most computationally intensive
+        step).
+    </p>
+    <center>
+    <table style="width: 75vw; margin: 0 auto; border-collapse: collapse;" border="1;" id="tab:1">
+    <tr>
+        <th> Method </th>
+        <th> Time elapsed </th>
+        <th> Function calls </th>
+    </tr>
+    <tr>
+        <td align="center"> Symplectic </td>
+        <td> 2.1131s </td>
+        <td> 258478 </td>
+    </tr>
+    <tr>
+        <td> RK23 </td>
+        <td> 0.1969s </td>
+        <td> 13937 </td>
+    </tr>
+    <tr>
+        <td> LSODA </td>
+        <td> 0.0197s </td>
+        <td> 1605 </td>
+    </tr>
+    </table>
+    </center>
+    <p>
+        This still isn't a perfect comparison. The scipy code is optimized to work blazingly fast
+        whereas I wrote my code in about 20 minutes, with no real optimizations. Of course that means
+        I'll keep working to optimize my code, but it's unlikely to create a 100x speed up so that
+        the symplectic integrator is beating LSODA. In the real world, people use symplectic
+        integrators for many body gravitational systems or for situations where a small drift of
+        function values could have catastrophic effects. So, it's definitely still worth understanding
+        symplectic integrators, but part of that understanding is knowing when not to use one.
+    </p>
+
+<div class="references">
+    <hr>
+    <ol>
+        <li id="fn:1">
+            <p>
+                Wikipedia: <a href="https://en.wikipedia.org/wiki/Hamiltonian_optics">Hamiltonian Optics</a>
+                $\label{ham optics}$
+            </p>
+        </li>
+    </ol>
+</div>
+</body>
+</html>

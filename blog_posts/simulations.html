@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zachary Boice</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <script>
+        MathJax = {
+        tex: {
+        inlineMath: {'[+]': [['$', '$']]}
+        }
+    };
+    </script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1 class="title">my thoughts</h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="blog.html">blog</a></li>
+            <li><a class="active" href="simulations.html">simulations</a></li>
+            <li><a href="activities.html">cv</a></li>
+            <li id="about"><a href="bio.html">about</a></li>
+        </ul>
+    </nav>
+
+    <div class="simulation outline">
+        <center>
+            <video style="width: 100%; max-width: 480px; margin: 5px;" controls>
+                <source src="simulations/videos/Schwarzschild_Geometry.mp4" type="video/mp4">
+            </video>
+        </center>
+        <p>
+            This video shows one example of geodesic motion in the Schwarzschild
+            spacetime geometry, i.e. the line element reads
+            $$ ds^2 = f dt^2 + f^{-1} dr^2 + r^2 (d\theta^2 + \sin \theta d\varphi^2) .$$
+            <!-- Need to track down the reference -->
+            We choose the particle to be confined to the equatorial plane ($\theta = \pi/2$) 
+            and assume that the radial position of the test mass is given by
+            $$ r_p(\chi) = \frac{p M}{1 + e \cos(\chi)} $$
+            where $e$ and $p$ are the eccentricity and semi-latus rectum, respectively. The variable
+            $\chi$ is the relativistic anomaly and allows us to appropriately parameterize orbits
+            (relativistic orbits don't necessarily close on themselves after one full cycle).
+            With $\chi$ defined, we are able to formulate differential equations for 
+            $\frac{d t}{d\chi}$ and $\frac{d \varphi_p}{d \chi}$ 
+            (see <a href="10.1103/PhysRevD.50.3816">Martel</a> for more information). 
+            Integrating these equations with RK4 provides all the information we desire about the system.
+        </p>
+    </div>
+
+    <div class="simulation outline">
+        <center>
+            <video style="width: 100%; max-width: 480px; margin: 5px;" controls>
+                <source src="blog_posts/symplectic_method/integration_comparison.mp4" type="video/mp4">
+            </video>
+        </center>
+        <p>
+            This video shows the motion of a test mass in a gravitational potential well
+            (centered at the origin). 
+            The three different orbits come from using different methods to numerically integrate
+            the system of differential equations that defines the motion. RK23 and LSODA are 
+            two common integrators with different degrees of accuracy (the less accurate RK23 method diverges very quickly).
+            The symplectic integrator is based off of 
+            <a href="https://pure.tue.nl/ws/portalfiles/portal/226599149/Thesis_BTW_Kessels.pdf">Kessels' paper</a>
+            and has a lower degree of accuracy than the LSODA method. However, symplectic methods
+            are built to preserve a deeper structure of phase space (the $(q, p)$) plane, which roughly translates
+            a method that conserves energy more closely. For a fixed time step across methods, the symplectic
+            method most accurately gives the elliptical orbit we expect. Go 
+            <a href="blog_posts/symplectic_method/symplectic_method.html">here</a> to learn more.
+        </p>
+    </div>
+</body>
+</html>
