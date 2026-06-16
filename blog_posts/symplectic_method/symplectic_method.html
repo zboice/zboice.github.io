@@ -46,9 +46,9 @@
         integration methods to understand its performance and strengths. The video below compares
         the symplectic method to two numerical integrators from scipy, all with the same, fixed step size.
         <center>
-            <video style="width: 100%; max-width: 480px; margin: 5px;" controls>
-                <source src="blog_posts/symplectic_method/integration_comparison.mp4" type="video/mp4">
-            </video>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QZpvzLbfKsY?si=CCr9TQxljswLCQ8K" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+            gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </center>
         As the simulation continues, we clearly see that the symplectic integrator conserves energy
         and keeps the orbiting particle on its elliptical path.
@@ -58,9 +58,9 @@
         So now, let's integrate for the same exact conditions, but with absolute and relative error tolerance 
         set for the two non-symplectic methods.
         <center>
-            <video style="width: 100%; max-width: 480px; margin: 5px;" controls>
-                <source src="blog_posts/symplectic_method/integration_comparison.mp4" type="video/mp4">
-            </video>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1tGZgKSd95o?si=fQhUxhMkgNFR8wkY" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+            gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </center>
         Now, we see that non-symplectic methods achieve a better match with the Hamiltonian at early times.
         At late times, error compounds and we see that the symplectic method again reigns supreme. If we run
