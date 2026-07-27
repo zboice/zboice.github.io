@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zachary Boice</title>
+
+    <link rel="stylesheet" href="../../style.css">
+    <script>
+        MathJax = {
+        tex: {
+        inlineMath: {'[+]': [['$', '$']]}
+        }
+    };
+    </script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1 class="title">zachary boice</h1>
+
+    <nav-bar></nav-bar>
+    <script src="/navbar.js"></script>
+
+    <h1>A bit about symplectic methods</h1>
+    <h3>By Zachary Boice</h3>
+
+    <h2>Introduction</h2>
+    <p>
+        Numerical Analysis shows us that we can create arbitrarily accurate numerical integration
+        methods that are highly efficient and can cater to many different needs. However, many problems
+        have an underlying physical character that we may be able to exploit to improve the accuracy of
+        our numerical methods. Generally, we wish to examine systems that can be described by a Hamiltonian
+        and exploit this property to better encapsulate the physics.
+    </p>
+
+    <h2>Motivation</h2>
+    <p>
+        Suppose we have a Hamiltonian system described by a phase space (with $q$ and $p$ as the canonical 
+        coordinates). We define a Poisson bracket on this phase space such that
+        \[ \{u, v\} = \frac{\partial u}{\partial q}\frac{\partial v}{\partial p} - \frac{\partial u}{\partial p}\frac{\partial v}{\partial q} \]
+        for two functions of phase space $u$ and $v$. Now, we define $\vec{X} = (q, p)^T$ to be the state vector
+        at a given time. If we consider the Poisson bracket of $\vec{X}$ with itself, we find (in one dimension) that
+        \[ \{\vec{X}, \vec{X} \} = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \, , \] which we shall call $\Omega$.
+    </p>
+    <p>
+        We now consider a different set of canonical coordinates describing the same phase space: $(Q, P) = (Q(q,p), P(q,p))$,
+        described by a state vector $\vec{\xi}$. These coordinates explicitly have a Poisson bracket
+        \[ \{\vec{\xi}, \vec{\xi} \} 
+        = \frac{\partial \vec{\xi}}{\partial q}\frac{\partial \vec{\xi}}{\partial p} - \frac{\partial \vec{\xi}}{\partial p}\frac{\partial \vec{\xi}}{\partial q}
+        = \mathcal{J}^T \Omega \mathcal{J} \]
+        where $\mathcal{J}_{ij} = \frac{\partial \xi_i}{\partial X_j}$ is the Jacobian matrix of the coordinate transformation.
+        But any canonical transformation must preserve Poisson brackets, and the Kronecker delta condition for positions
+        and momenta must be the same in our new coordinates: $\{\vec{\xi}, \vec{\xi} \} = \Omega$. With these two relations, we find that
+        \[ \mathcal{J}^T \Omega \mathcal{J} \equiv \Omega \]
+        holds for canonical transformations (see [__] for a more robust and rigorous derivation).
+    </p>
+    <p>
+        The condition we derived above defines $\mathcal{J}$ to be a symplectic matrix (see [wikipedia] for more).
+        Further, the determinant of $\mathcal{J}$ is the Poisson bracket of $(p,q)$ in the $(P,Q)$ coordinate system,
+        so there is a fundamental link between Poisson brackets and Symplecticity. This relation has to do with the
+        so-called "symplectic two-form", an important ingredient of the differential geometry underlying Hamiltonian mechanics.
+        For now, it suffices to think about whether there might be a way for our computational framework to maintain the
+        symplectic structure of our system, and use that to create a highly accurate numerical integrator.
+    </p>
+
+    <h2>Description of this method</h2>
+    <p>
+        
+    </p>
+
+    <h2>Comparison of Methods</h2>
+    <p class="bulk_text">
+        Now that we have developed this symplectic method, it's valuable to compare it to other
+        integration methods to understand its performance and strengths. The video below compares
+        the symplectic method to two numerical integrators from scipy, all with the same, fixed step size.
+        <center>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QZpvzLbfKsY?si=CCr9TQxljswLCQ8K" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+            gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </center>
+        As the simulation continues, we clearly see that the symplectic integrator conserves energy
+        and keeps the orbiting particle on its elliptical path.
+    </p>
+    <p class="bulk_text">
+        But this isn't exactly a fair competition among the integrators. The strength of the Runge-Kutta
+        method is how well it can be tuned to the problem to produce highly accurate results blazingly fast.
+        So now, let's integrate for the same exact conditions, but with absolute and relative error tolerance 
+        set for the two non-symplectic methods.
+    </p>
+        <center>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1tGZgKSd95o?si=fQhUxhMkgNFR8wkY" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+            gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </center>
+    <p class="bulk_text">
+        Now, we see that non-symplectic methods achieve a better match with the Hamiltonian at early times.
+        At late times, error compounds and we see that the symplectic method again reigns supreme. If we run
+        any position or energy comparison for long enough, the symplectic method will win out in accuracy.
+        But at what cost? The table below shows how long each method took for the above simulation, and
+        how many calls each made to the system derivative function (often the most computationally intensive
+        step).
+    </p>
+    <center>
+    <table style="width: 75vw; margin: 0 auto; border-collapse: collapse;" border="1;" id="tab:1">
+    <tr>
+        <th> Method </th>
+        <th> Time elapsed </th>
+        <th> Function calls </th>
+    </tr>
+    <tr>
+        <td align="center"> Symplectic </td>
+        <td> 2.1131s </td>
+        <td> 258478 </td>
+    </tr>
+    <tr>
+        <td> RK23 </td>
+        <td> 0.1969s </td>
+        <td> 13937 </td>
+    </tr>
+    <tr>
+        <td> LSODA </td>
+        <td> 0.0197s </td>
+        <td> 1605 </td>
+    </tr>
+    </table>
+    </center>
+    <p class="bulk_text">
+        This still isn't a perfect comparison. The scipy code is highly optimized
+        whereas I wrote my code in about 20 minutes, with no real optimizations. Of course that means
+        I'll keep working to optimize my code, but it's unlikely to create a 100x speed up so that
+        the symplectic integrator is beating LSODA. In the real world, people use symplectic
+        integrators for many body gravitational systems or for situations where a small drift of
+        function values could have catastrophic effects. So, it's definitely still worth understanding
+        symplectic integrators, but part of that understanding is knowing when not to use one.
+    </p>
+
+<div class="references">
+    <hr>
+    <ol>
+        <li id="fn:1">
+            <p>
+                Wikipedia: <a href="https://en.wikipedia.org/wiki/Hamiltonian_optics">Hamiltonian Optics</a>
+                $\label{ham optics}$
+            </p>
+        </li>
+    </ol>
+</div>
+</body>
+</html>
