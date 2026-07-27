@@ -5,21 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zachary Boice</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
     <h1 class="title">my thoughts</h1>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">home</a></li>
-            <li><a class="active" href="blog.html">blog</a></li>
-            <li><a href="simulations">simulations</a></li>
-            <li><a href="activities.html">cv</a></li>
-            <li id="about"><a href="bio.html">about</a></li>
-        </ul>
-    </nav>
+    <nav-bar></nav-bar>
+    <script src="navbar.js"></script>
 
     <div class="post_outline">
         <img src="blog_posts/symplectic_method/phase_space_traj.png">
@@ -29,22 +22,43 @@
         </p>
         <p class="date">6/15/26</p>
     </div>
-    
+
     <div class="post_outline">
         <img src="blog_posts/optics_final_project/GRIN_graphic.png">
         <h2><a href="blog_posts/optics_final_project/optics_final_project.html">Hamiltonian Optics</a></h2>
         <p class="summary">An introduction to the framework of Hamiltonian optics,
-            Poisson brackets, and Lie transformations.
+            Poisson brackets, and Lie transformations (original pdf <a class="var_link" href="projects/Optics_Final_Project.pdf">here</a>).
         </p>
         <p class="date">5/20/26</p>
     </div>
-    
+
     <div class="post_outline">
-        <img src="images/meshgrid.png">
-        <h2><a href="blog_posts/method_of_lines.html">The Method of lines</a></h2>
-        <p class="summary">A technique for numerically solving
-            partial differential equations.</p>
-        <p class="date">7/30/25</p>
+        <img src="simulations/videos/video_313.gif">
+        <h2><a href="projects/Final Presentation.pdf">Analysis of Chladni Plate Patterns</a></h2>
+        <p>
+            A presentation about Chladni plates fulfilling a requirement for my Intermediate lab
+            experience. More information and a complete blog post soon!
+        </p>
+        <p class="date">5/__/26</p>
+    </div>
+
+    <div class="post_outline">
+        <img src="images/tumor_scan.png">
+        <h2><a href="projects/LPOR_project.pdf">Applications of LPOR to IMRT</a></h2>
+        <p class="summary">
+            Linear Programming and Operations Research (LPOR) project on
+            Intensity Modulated Radiation Therapy (IMRT).
+        </p>
+        <p class="date">5/7/26</p>
+    </div>
+
+    <div class="post_outline">
+        <img src="images/wave-init.png">
+        <h2><a href="projects/galerkin_method.pdf">Numerical Analysis Project</a></h2>
+        <p class="summary">
+            Numerical Analysis project on the Galerkin Method.
+        </p>
+        <p class="date">12/5/25</p>
     </div>
 </body>
 </html>

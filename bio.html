@@ -10,39 +10,41 @@
 <body>
     <h1 class="title">bio</h1>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">home</a></li>
-            <li><a href="blog.html">blog</a></li>
-            <li><a href="simulations.html">simulations</a></li>
-            <li><a href="activities.html">cv</a></li>
-            <li id="about"><a class="active" href="bio.html">about</a></li>
-        </ul>
-    </nav>
+    <nav-bar></nav-bar>
+    <script src="navbar.js"></script>
 
     <div class="wrapper">
         <img id="bio_pic" src="images/ZacharyBoice.jpg">
         <h3 id="name">Zachary Boice</h3>
-        <ul id="contact_links">
-            <li><a href="https://github.com/zboice" aria-label="github">github</a></li>
-            <li><a href="https://www.linkedin.com/in/zachary-boice-b373b8314/" aria-label="linkedin">linkedin</a></li>
-            <!-- linkedin does not go to correct place -->
+        <ul id="contact_links" style="text-align: center; margin: 0; padding: 0;">
+            <li style="display: inline-block; margin: 0 10px;"><a href="https://github.com/zboice" aria-label="github">github</a></li>
+            <li style="display: inline-block; margin: 0 10px;"><a href="https://www.linkedin.com/in/zachary-boice-b373b8314/" aria-label="linkedin">linkedin</a></li>
+            <li style="display: inline-block; margin: 0 10px;"><a href="my_CV.pdf">cv</a></li>
         </ul>
     </div>
 
     <div class="bulk_text">
         <p>
-            I'm a third year undergraduate at SUNY Geneseo, studying Physics and Math.
+            I'm a fourth year undergraduate at SUNY Geneseo, studying Physics and Math.
             In my spare time, I am the president of Geneseo's Physics and Astronomy Club,
             I sing in an acapella group, and I play the cello. I also enjoy learning about
             random physics topics and then creating simulations or visualizations.
         </p>
         <p>
-            For the past two years, I've been doing research with Dr. Thomas Osburn on
+            For the past three years, I've been doing research with Dr. Thomas Osburn on
             gravitational wave source modeling. Importantly, I implemented a hyperboloidal
-            slicing and compactification scheme which improved boundary conditions. Our
+            slicing and compactification scheme which improved the boundary conditions for a 
+            time-domain code with circular orbits. Some of our
             current work is on broadening this scheme to easily accomodate eccentric
-            geodesics, and to eventually allow for inspirals.
+            geodesics, and to eventually allow for inspirals. We are also developing a
+            scheme to calculate gravitational self-force numerically, starting with a
+            toy model based on electric charges.
+        </p>
+        <p>
+            I am also involved in an ongoing project with Gavin George (_) and Chris Desiderio (_)
+            to address light pollution on the SUNY Geneseo campus. Our goal is to collect
+            data about light levels on campus so we can educate the people who make decisions
+            about campus lighting.
         </p>
     </div>
 </body>

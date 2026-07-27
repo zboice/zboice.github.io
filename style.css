@@ -55,10 +55,6 @@ body{
     color: #f3f5b5;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-a{
-    text-decoration: none;
-    color: #f3f5b5;
-}
 p{
     margin: 5px;
 }
@@ -69,8 +65,8 @@ td{
 }
 
 .post_outline{
-    float: left;
-    margin: 5px;
+    overflow: hidden;
+    margin: 10px;
     padding: 10px 4%;
     outline: 2px solid;
     outline-color: #65a59a;
@@ -91,6 +87,10 @@ td{
     border-radius: 0px;
 }
 
+.var_link{
+    color: #44b7b9;
+}
+
 .wrapper{
     height: fit-content;
     width: 100%;
@@ -109,8 +109,6 @@ td{
     place-self: center;
 }
 #contact_links{
-    width: 10em;
-    height: 1em;
     place-self: center;
 }
 .wrapper li{
@@ -123,8 +121,9 @@ td{
 
 .bulk_text{
     position: relative;
-    text-align: center;
-    margin: 2em;
-    padding: 1em;
+    text-align: left;
+    margin: 5px;
+    padding: 1px;
     float: left;
+    text-indent: 20px;
 }
