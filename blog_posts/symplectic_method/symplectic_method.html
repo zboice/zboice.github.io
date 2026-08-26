@@ -53,7 +53,7 @@
         But any canonical transformation must preserve Poisson brackets, and the Kronecker delta condition for positions
         and momenta must be the same in our new coordinates: $\{\vec{\xi}, \vec{\xi} \} = \Omega$. With these two relations, we find that
         \[ \mathcal{J}^T \Omega \mathcal{J} \equiv \Omega \]
-        holds for canonical transformations (see [__] for a more robust and rigorous derivation).
+        holds for canonical transformations (see [<a href="#fn:1">2</a>] for a more robust and rigorous derivation).
     </p>
     <p>
         The condition we derived above defines $\mathcal{J}$ to be a symplectic matrix (see [wikipedia] for more).
@@ -63,10 +63,27 @@
         For now, it suffices to think about whether there might be a way for our computational framework to maintain the
         symplectic structure of our system, and use that to create a highly accurate numerical integrator.
     </p>
-
-    <h2>Description of this method</h2>
     <p>
-        
+        Following Kessels in [<a href="#fn:2">2</a>], we develop a numerical quadrature scheme that preserves
+        the symplectic structure of the underlying space. We simply port Kessels' matlab code to python and
+        discuss the implications of the numerical integration. More information on developing symplectic
+        methods will come in a later blog post. 
+    </p>
+
+    <h2>Problem statement</h2>
+    <p class="bulk_text">
+        We shall examine the specific problem of (classical) motion around a star, using the Hamiltonian
+        framework. Namely, the Hamiltonian takes the adimensional form
+        \[ H = \frac{p_x^2 + p_y^2 + p_z^2}{2} - \frac{1}{\sqrt{q_x^2 + q_y^2 + q_z^2}} \]
+        so that Hamilton's equations become
+        \begin{align*}
+            \dot{q}_i &= p_i \\
+            \dot{p}_i &= \frac{-q_i}{(q_x^2 + q_y^2 + q_z^2)^{3/2}} .
+        \end{align*}
+
+        This simple (and importantly separable) Hamiltonian of a non-chaotic system will provide a lot
+        of information about why symplectic integration is usefull, and it illustrates a key reason
+        for using a symplectic method.
     </p>
 
     <h2>Comparison of Methods</h2>
@@ -127,12 +144,12 @@
     </center>
     <p class="bulk_text">
         This still isn't a perfect comparison. The scipy code is highly optimized
-        whereas I wrote my code in about 20 minutes, with no real optimizations. Of course that means
-        I'll keep working to optimize my code, but it's unlikely to create a 100x speed up so that
-        the symplectic integrator is beating LSODA. In the real world, people use symplectic
-        integrators for many body gravitational systems or for situations where a small drift of
-        function values could have catastrophic effects. So, it's definitely still worth understanding
-        symplectic integrators, but part of that understanding is knowing when not to use one.
+        whereas I wrote my code in about 20 minutes, with no real optimizations. Even with some optimization
+        it's unlikely that the symplectic integrator will achieve the 100x speed up needed to beat LSODA. 
+        In the real world, people use symplectic integrators for many body gravitational systems or for 
+        situations where a small drift of function values could have catastrophic effects. So, it's 
+        definitely still worth understanding symplectic integrators, but part of that understanding 
+        is knowing when not to use one.
     </p>
 
 <div class="references">
@@ -140,8 +157,12 @@
     <ol>
         <li id="fn:1">
             <p>
-                Wikipedia: <a href="https://en.wikipedia.org/wiki/Hamiltonian_optics">Hamiltonian Optics</a>
-                $\label{ham optics}$
+                <a href="https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/f00f7f68ac7ba346a0868efb7430582c_MIT8_09F14_Chapter_4.pdf">Advanced Classical Mechanics</a>
+            </p>
+        </li>
+        <li id="fn:2">
+            <p>
+                <a href="https://pure.tue.nl/ws/portalfiles/portal/226599149/Thesis_BTW_Kessels.pdf">Symplectic Integration</a>
             </p>
         </li>
     </ol>
