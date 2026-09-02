@@ -56,7 +56,7 @@
         holds for canonical transformations (see [<a href="#fn:1">2</a>] for a more robust and rigorous derivation).
     </p>
     <p>
-        The condition we derived above defines $\mathcal{J}$ to be a symplectic matrix (see [wikipedia] for more).
+        The condition we derived above defines $\mathcal{J}$ to be a symplectic matrix (see [<a href="#fn:2">2</a>] for more).
         Further, the determinant of $\mathcal{J}$ is the Poisson bracket of $(p,q)$ in the $(P,Q)$ coordinate system,
         so there is a fundamental link between Poisson brackets and Symplecticity. This relation has to do with the
         so-called "symplectic two-form", an important ingredient of the differential geometry underlying Hamiltonian mechanics.
@@ -64,7 +64,7 @@
         symplectic structure of our system, and use that to create a highly accurate numerical integrator.
     </p>
     <p>
-        Following Kessels in [<a href="#fn:2">2</a>], we develop a numerical quadrature scheme that preserves
+        Following Kessels in [<a href="#fn:3">3</a>], we develop a numerical quadrature scheme that preserves
         the symplectic structure of the underlying space. We simply port Kessels' matlab code to python and
         discuss the implications of the numerical integration. More information on developing symplectic
         methods will come in a later blog post. 
@@ -158,6 +158,11 @@
         <li id="fn:1">
             <p>
                 <a href="https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/f00f7f68ac7ba346a0868efb7430582c_MIT8_09F14_Chapter_4.pdf">Advanced Classical Mechanics</a>
+            </p>
+        </li>
+        <li id="fn:3">
+            <p>
+                <a href="https://en.wikipedia.org/wiki/Symplectic_matrix#">Symplectic Matrix</a>
             </p>
         </li>
         <li id="fn:2">
